@@ -1,0 +1,8 @@
+language: swift
+os: osx
+script:
+  - xcodebuild analyze -project ./dev/dev.xcodeproj -scheme dev -destination 'platform=iOS Simulator,name=iPhone X' ONLY_ACTIVE_ARCH=NO
+  - xcodebuild test -project ./dev/dev.xcodeproj -scheme dev -destination 'platform=iOS Simulator,name=iPhone X' ONLY_ACTIVE_ARCH=NO
+  - xcodebuild build -project ./dev/dev.xcodeproj -scheme dev ONLY_ACTIVE_ARCH=NO
+  - xcodebuild archive -scheme dev -archivePath ./Archives/dev.xcarchive ONLY_ACTIVE_ARCH=NO
+  - xcodebuild -exportArchive -exportPath ./Releases/ -archivePath ./Archives/dev.xcarchive -exportOptionsPlist ./Archives/ExportOptions.plist ONLY_ACTIVE_ARCH=NO
