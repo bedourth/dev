@@ -3,6 +3,7 @@ os: osx
 xcode_project: ./dev/dev.xcodeproj
 xcode_scheme: dev
 xcode_destination: platform=iOS Simulator,OS=10.1,name=iPhone X
+osx_image: xcode10.1
 
 script:
 - xcodebuild analyze -project ./dev/dev.xcodeproj -scheme dev -destination 'platform=iOS Simulator,name=iPhone X' ONLY_ACTIVE_ARCH=NO
